@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página oficial de la Real, Excelentísima, Muy Ilustre y Venerable Cofradía de Nuestro Padre Jesús 'El Rico' y María Santísima del Amor de Málaga">
+    <title>Cofradía El Rico • Málaga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --purple: #4B0082;
+            --gold: #D4AF77;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .tailwind-ready {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(75, 0, 130, 0.75), rgba(75, 0, 130, 0.85)), url('https://static.grupojoly.com/clip/e42be76e-8c07-4894-a8c5-ef4c5b3e6a0c_source-aspect-ratio_1600w_0.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #D4AF77;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #D4AF77, #4B0082);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .thumbnail {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgb(75 0 130 / 0.2);
+        }
+    </style>
+</head>
+<body class="tailwind-ready">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b-4 border-[#4B0082] shadow-xl sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="px-6 py-4  items-center justify-between">
+<!-- Logo + Título más a la izquierda -->
+<div class="flex items-medium gap-5 -ml-5">   <!-- ← Aquí está el cambio principal -->
+    <img src="https://i.postimg.cc/02TRftf7/Chat-GPT-Image-19-abr-2026-12-26-27.png" 
+         alt="Logo Cofradía El Rico" 
+         class="w-24 h-24 object-contain">
+    <div>
+        <h1 class="title-font text-4xl font-bold tracking-tighter text-[#4B0082] gap-0 -ml-0">FANS EL RICO</h1>
+        <p class="text-s text-[#D4AF77] font-medium gap-0 -ml-0">MÁLAGA • 1756</p>
+    </div>
+</div>
+
+                <!-- Menú principal -->
+                <div class="hidden lg:flex items-center gap-x-8 text-[#4B0082] font-medium">
+                    <a href="#inicio" class="nav-link text-lg">Inicio</a>
+                    
+                    <!-- Sagrados Titulares -->
+                    <a href="#titulares" class="nav-link text-lg text-center">Sagrados Titulares</a>
+                    
+                    <!-- Historia -->
+                    <a href="#historia" class="nav-link text-lg">Historia</a>
+                    
+                    <!-- Curiosidades -->
+                    <a href="#curiosidades" class="nav-link text-lg">Curiosidades</a>
+                    
+                    <!-- Semana Santa (con submenú) -->
+                    <div class="relative group">
+                        <button onclick="toggleDropdown(this)" class="nav-link text-lg flex items-center gap-1">
+                            Semana Santa 
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="hidden group-hover:block absolute top-full left-0 bg-white shadow-2xl rounded-2xl py-3 px-6 w-64 text-sm border border-[#D4AF77]/30">
+                            <a href="#semana-santa" class="block py-2 hover:text-[#D4AF77]">• Recorrido</a>
+                            <a href="#semana-santa" class="block py-2 hover:text-[#D4AF77]">• Horario</a>
+                            <a href="#semana-santa" class="block py-2 hover:text-[#D4AF77]">• Tronos</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Enseres -->
+                    <div class="relative group">
+                        <button onclick="toggleDropdown(this)" class="nav-link text-lg flex items-center gap-1">
+                            Enseres 
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="hidden group-hover:block absolute top-full left-0 bg-white shadow-2xl rounded-2xl py-3 px-6 w-64 text-sm border border-[#D4AF77]/30">
+                            <a href="#enseres" class="block py-2 hover:text-[#D4AF77]">• Enseres de la Virgen</a>
+                            <a href="#enseres" class="block py-2 hover:text-[#D4AF77]">• Enseres del Cristo</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#galeria" class="nav-link text-lg">Galería</a>
+                    
+                    <!-- La Tradición -->
+                    <a href="#tradicion" class="nav-link text-lg text-center">La Tradición</a>
+                    
+                    <!-- Sedes -->
+                    <div class="relative group">
+                        <button onclick="toggleDropdown(this)" class="nav-link text-lg flex items-center gap-1">
+                            Sedes 
+                            <i class="fa-solid fa-chevron-down text-xs text-center"></i>
+                        </button>
+                        <div class="hidden group-hover:block absolute top-full left-0 bg-white shadow-2xl rounded-2xl py-3 px-6 w-64 text-sm border border-[#D4AF77]/30">
+                            <a href="#sedes" class="block py-2 hover:text-[#D4AF77]">• Casa Hermandad</a>
+                            <a href="#sedes" class="block py-2 hover:text-[#D4AF77]">• Iglesia Santiago Apóstol</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Alta de hermano -->
+                    <a href="https://cofradiaelrico.com/alta/" target="_blank" 
+                       class="ml-4 px-8 py-3 bg-[#D4AF77] hover:bg-[#4B0082] text-white font-semibold rounded-3xl flex items-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-user-plus"></i>
+                        ALTA DE HERMANO
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-[#4B0082] text-3xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden lg:hidden border-t px-6 py-6 bg-white">
+                <div class="flex flex-col gap-4 text-[#4B0082] font-medium text-lg">
+                    <a href="#inicio" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-house w-6"></i>Inicio</a>
+                    <a href="#titulares" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-pray w-6"></i>Sagrados Titulares</a>
+                    <a href="#historia" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-book w-6"></i>Historia</a>
+                    <a href="#curiosidades" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-lightbulb w-6"></i>Curiosidades</a>
+                    <div class="pl-8">
+                        <a href="#semana-santa" onclick="toggleMobileMenu()" class="block py-1">• Recorrido</a>
+                        <a href="#semana-santa" onclick="toggleMobileMenu()" class="block py-1">• Horario</a>
+                        <a href="#semana-santa" onclick="toggleMobileMenu()" class="block py-1">• Tronos</a>
+                    </div>
+                    <a href="#enseres" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-gem w-6"></i>Enseres</a>
+                    <a href="#galeria" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-images w-6"></i>Galería</a>
+                    <a href="#tradicion" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-hand-holding-heart w-6"></i>La Tradición</a>
+                    <a href="#sedes" onclick="toggleMobileMenu()" class="flex items-center gap-3"><i class="fa-solid fa-church w-6"></i>Sedes</a>
+                    <a href="https://cofradiaelrico.com/alta/" target="_blank" class="mt-6 flex justify-center items-center gap-2 bg-[#D4AF77] text-white py-4 rounded-3xl text-xl font-bold">
+                        <i class="fa-solid fa-user-plus"></i> ALTA DE HERMANO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- INICIO - HERO -->
+    <header id="inicio" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="max-w-2xl mx-auto">
+                <span class="inline-block px-6 py-2 bg-white/20 backdrop-blur-md text-[#D4AF77] text-s font-medium tracking-[2px] rounded-full mb-6 border border-[#D4AF77]/50">Real, Excelentísima, Muy Ilustre y Venerable Cofradía</span>
+                <h1 class="title-font text-7xl md:text-8xl font-bold leading-none mb-6 drop-shadow-2xl">
+                    NUESTRO PADRE JESÚS “EL RICO” Y MARÍA SANTÍSIMA DEL AMOR
+                </h1>
+                <p class="text-2xl mb-10 text-white/90 max-w-lg mx-auto">Málaga • Desde 1756. La Cofradía que libera un preso cada Miércoles Santo.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="#titulares" 
+                       class="px-10 py-5 bg-white text-[#4B0082] font-semibold text-xl rounded-3xl flex items-center justify-center gap-3 hover:scale-105">
+                        <i class="fa-solid fa-cross"></i>
+                        CONOCE A NUESTROS TITULARES
+                    </a>
+                    <a href="#tradicion" 
+                       class="px-10 py-5 border-2 border-white text-white font-semibold text-xl rounded-3xl flex items-center justify-center gap-3 hover:bg-white/10">
+                        <i class="fa-solid fa-handcuffs"></i>
+                        LA TRADICIÓN DEL INDULTO
+                    </a>
+                </div>
+                
+                <div class="mt-16 text-white/70 text-sm flex items-center justify-center gap-8">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-calendar"></i> Miércoles Santo</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-map-marker-alt"></i> Parroquia de Santiago Apóstol</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> 17:55 h</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center text-white/60">
+        </div>
+    </header>
+
+    <!-- SAGRADOS TITULARES -->
+    <section id="titulares" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-[#D4AF77] text-sm font-medium">SAGRADOS TITULARES</span>
+                <h2 class="title-font text-5xl text-[#4B0082] font-bold section-header">María Santísima del Amor y Nuestro Padre Jesús “El Rico”</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- Jesús El Rico -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <img src="https://agrupaciondecofradias.com/wp-content/uploads/2017/01/Rico-1-682x1024.jpg" alt="Nuestro Padre Jesús El Rico" 
+                             class="w-full rounded-3xl shadow-2xl object-cover h-[520px]">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold text-[#4B0082] mb-4">Nuestro Padre Jesús “El Rico”</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">Obra de José Navas Parejo (1939). Talla de vestir que representa a Jesús Nazareno con la Cruz a cuestas. Su brazo derecho articulado permite el gesto de bendición durante la liberación del preso, símbolo de misericordia y perdón.</p>
+                        <div class="flex items-center gap-4 text-sm text-[#D4AF77]">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-palette"></i> Estilo dieciochesco malagueño</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-hand"></i> Brazo articulado</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- María Santísima del Amor -->
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <img src="https://paliodeplata.com/wp-content/uploads/2023/10/Portada-1.jpg" alt="María Santísima del Amor" 
+                             class="w-full rounded-3xl shadow-2xl object-cover h-[520px]">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-bold text-[#4B0082] mb-4">María Santísima del Amor</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">Obra del imaginero hispalense Antonio Joaquín Dubé de Luque. Dolorosa de gran belleza y expresión serena que acompaña al Señor cada Miércoles Santo. Su advocación cambió de “Dolores” a “del Amor” en 1924.</p>
+                        <div class="flex items-center gap-4 text-sm text-[#D4AF77]">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-gem"></i> Manto de terciopelo azul</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-crown"></i> Corona de plata y oro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIA (extensa) -->
+    <section id="historia" class="py-20 bg-[#4B0082] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-7">
+                    <span class="text-[#D4AF77] text-sm font-medium">DESDE 1584</span>
+                    <h2 class="title-font text-5xl font-bold mb-8 section-header">Historia de la Cofradía</h2>
+                    
+                    <div class="prose prose-invert text-lg leading-relaxed">
+                        <p>Los orígenes de la Cofradía se remontan a 1584, cuando la Hermandad de la Vera+Cruz del Convento Franciscano de San Luis el Real ya veneraba a Jesús Nazareno. En 1658, según documentos del Archivo de Protocolos Notariales, se constituyó formalmente la Hermandad de Jesús Nazareno con 72 hermanos.</p>
+                        
+                        <p>En 1756, el rey Fernando VI concedió la Real Aprobación, convirtiéndola en Cofradía independiente bajo la advocación de “El Rico”. Durante el reinado de Carlos III, una terrible epidemia de peste asoló Málaga. Los presos de la cárcel, en un acto de fe y arrepentimiento, se ofrecieron a sacar en procesión la imagen del Señor cuando nadie más se atrevía. Cumplieron su promesa y regresaron a sus celdas. Impresionado, el monarca otorgó el privilegio real de liberar a un preso cada Miércoles Santo.</p>
+                        
+                        <p>En 1836, tras la desamortización de Mendizábal, la Cofradía se trasladó a su sede actual: la Parroquia de Santiago Apóstol. En 1916 se incorporó la primera Dolorosa (bajo la advocación de los Dolores), que en 1924 pasó a llamarse María Santísima del Amor. La Guerra Civil y los sucesos de 1931 destruyeron las imágenes primitivas, pero en 1938 la Cofradía se reorganizó con las tallas actuales.</p>
+                        
+                        <p>Hoy, la Cofradía es una de las más antiguas y emblemáticas de la Semana Santa malagueña, fundadora de la Agrupación de Cofradías en 1921 y guardiana de una tradición única en el mundo.</p>
+                    </div>
+                </div>
+                
+                <!-- Imagen lateral Historia -->
+                <div class="md:col-span-5">
+                    <img src="https://www.nosoloalameda.es/wp-content/uploads/4.MONTAJEFINAL.jpg" alt="Historia Cofradía El Rico" 
+                         class="w-full h-full object-cover rounded-3xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURIOSIDADES (extensa) -->
+    <section id="curiosidades" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <span class="text-[#D4AF77] text-sm font-medium">LO QUE NOS HACE ÚNICOS</span>
+            <h2 class="title-font text-5xl text-[#4B0082] font-bold mb-12 section-header">Curiosidades de El Rico</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#F8F1E3] p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">El privilegio del indulto</h3>
+                    <p class="text-gray-700">Única cofradía del mundo que, por Real Privilegio de Carlos III, libera a un preso cada Miércoles Santo. El gesto del brazo articulado de Jesús sella el perdón.</p>
+                </div>
+                <div class="bg-[#F8F1E3] p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">La Cabeza de San Juan Bautista</h3>
+                    <p class="text-gray-700">Cada año, el Museo de Málaga cede la talla anónima del siglo XVIII de San Juan Bautista Degollado que se coloca a los pies del Señor. Simboliza la curación milagrosa tras la epidemia.</p>
+                </div>
+                <div class="bg-[#F8F1E3] p-8 rounded-3xl">
+                    <h3 class="text-2xl font-semibold mb-3">Capirotes “de habichuela”</h3>
+                    <p class="text-gray-700">Los nazarenos de El Rico conservan los antiguos capirotes puntiagudos en forma de habichuela, únicos en la Semana Santa malagueña.</p>
+                </div>
+                
+                <div class="md:col-span-3 mt-6 grid md:grid-cols-3 gap-8 text-sm">
+                    <div class="border-l-4 border-[#D4AF77] pl-6">
+                        <strong>Escudo de Santiago</strong><br>Los cargos llevan capa blanca con el escudo de Santiago Apóstol en el hombro.
+                    </div>
+                    <div class="border-l-4 border-[#D4AF77] pl-6">
+                        <strong>Vinculación con la Policía Nacional</strong><br>Desde 1938, la Policía acompaña al Señor como Hermanos Mayores Honorarios.
+                    </div>
+                    <div class="border-l-4 border-[#D4AF77] pl-6">
+                        <strong>Brazo articulado</strong><br>Única imagen de la Semana Santa que puede mover el brazo para bendecir al preso indultado.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEMANA SANTA (extensa) -->
+    <section id="semana-santa" class="py-20 bg-[#4B0082] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <div class="lg:w-2/3">
+                    <span class="text-[#D4AF77]">MIÉRCOLES SANTO</span>
+                    <h2 class="title-font text-5xl font-bold mb-8 section-header">Semana Santa en El Rico</h2>
+                    
+                    <h3 class="text-3xl mb-6 font-semibold">Recorrido</h3>
+                    <div class="bg-white/10 backdrop-blur rounded-3xl p-8 text-lg mb-12">
+                        Salida desde la Casa Hermandad → Pasillo de Santa Isabel → Cisneros → Especerías → Plaza de la Constitución → Marqués de Larios → Martínez → Atarazanas → Torregorda → Plaza del Obispo (momento del indulto) → Catedral → Calle Granada → Entrada en templo.
+                    </div>
+                    
+                    <h3 class="text-3xl mb-6 font-semibold">Horario aproximado (2026)</h3>
+                    <div class="grid grid-cols-3 gap-4 mb-12">
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-6 text-center">
+                            <div class="text-[#D4AF77] text-sm">Salida del templo</div>
+                            <div class="text-4xl font-bold">17:55 h</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-6 text-center">
+                            <div class="text-[#D4AF77] text-sm">Liberación del preso  </div>
+                            <div class="text-4xl font-bold">20:00 h</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-6 text-center">
+                            <div class="text-[#D4AF77] text-sm">Entrada Recorrido Oficial</div>
+                            <div class="text-4xl font-bold">21:04 h</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-6 text-center">
+                            <div class="text-[#D4AF77] text-sm">Salida Recorrido Oficial</div>
+                            <div class="text-4xl font-bold">23:24 h</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-3xl p-6 text-center">
+                            <div class="text-[#D4AF77] text-sm">Encierro en el templo</div>
+                            <div class="text-4xl font-bold">01:15 h</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-3xl mb-6 font-semibold">Tronos</h3>
+                    <p class="text-xl leading-relaxed">Dos tronos de gran belleza y tradición. El trono del Cristo es de estilo neobarroco dorado con profusa orfebrería y el de la Virgen destaca por su canastilla plateada y manto de terciopelo azul bordado en oro. Ambos son portados con devoción por hombres de trono de la Cofradía </p>
+                </div>
+                
+                <!-- Imagen lateral Semana Santa -->
+                <div class="lg:w-1/3">
+                    <img src="https://s1.ppllstatics.com/diariosur/www/multimedia/201803/28/media/MM-RICO/1405700638.jpg" alt="Procesión El Rico" class="rounded-3xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENSERES -->
+    <section id="enseres" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="title-font text-5xl text-[#4B0082] font-bold mb-12 section-header text-center">Enseres Sagrados</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl mb-6 flex items-center gap-3"><i class="fa-solid fa-gem"></i> Enseres de la Virgen</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Manto de terciopelo azul celeste bordado en oro y plata</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Corona de plata repujada con pedrería</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Cruz pectoral de carey con remates de plata (reliquia de la antigua cruz del Señor)</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Fajines y joyas donadas por hermandades y devotos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-3xl mb-6 flex items-center gap-3"><i class="fa-solid fa-gem"></i> Enseres del Cristo</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Túnica de terciopelo morado con pasamanería de oro</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Cruz de madera con cantoneras de plata</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Corona de espinas natural y potencias de oro</li>
+                        <li class="flex gap-3"><span class="font-bold text-[#D4AF77]">•</span> Candelabros de bronce y orfebrería procesional</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="py-20 bg-[#F8F1E3]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-[#D4AF77] text-sm font-medium">IMÁGENES DE DEVOCIÓN</span>
+                <h2 class="title-font text-5xl text-[#4B0082] font-bold section-header">Galería</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="gallery-grid">
+                <!-- Las 8 fotos se generan con JS abajo -->
+            </div>
+            
+            <!-- Modal Lightbox -->
+            <div id="modal" onclick="if(event.target.id === 'modal') hideModal()" 
+                 class="hidden fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center">
+                <div class="modal max-w-4xl w-[95%] bg-white rounded-3xl overflow-hidden relative">
+                    <button onclick="hideModal()" class="absolute top-6 right-6 text-[#4B0082] text-4xl z-10">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <img id="modal-image" src="" alt="" class="w-full max-h-[85vh] object-contain">
+                    <div id="modal-caption" class="p-6 text-center text-[#4B0082] font-medium"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LA TRADICIÓN -->
+    <section id="tradicion" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7">
+                    <span class="text-[#D4AF77]">LA TRADICIÓN MÁS ANTIGUA</span>
+                    <h2 class="title-font text-5xl text-[#4B0082] font-bold mb-8 section-header">Liberación del preso</h2>
+                    <div class="prose text-lg">
+                        <p>Desde el siglo XVIII, cada Miércoles Santo, en la Plaza del Obispo, Nuestro Padre Jesús “El Rico” libera a un preso indultado por el Gobierno de España. El momento culmina cuando el brazo articulado del Señor se levanta en señal de bendición y perdón.</p>
+                        <p>La leyenda cuenta que durante la epidemia de peste de 1759, los reclusos sacaron la imagen y cumplieron su promesa de volver a prisión. Carlos III, conmovido, concedió el privilegio perpetuo que se mantiene hasta hoy.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-5">
+                    <img src="https://s1.abcstatics.com/abc/sevilla/media/andalucia/2022/04/13/s/rico-liberacion-preso-U82066201576OKX-1200x630@abc.jpg" alt="Momento del indulto" class="rounded-3xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEDES -->
+    <section id="sedes" class="py-20 bg-[#4B0082] text-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="title-font text-4xl font-bold mb-6">Casa Hermandad</h2>
+                <p class="mb-8">Calle Victoria, 12-14 (Málaga). Sede social donde se celebran los cabildos, ensayos y actos fraternales.</p>
+                <img src="https://photos.wikimapia.org/p/00/04/12/95/92_big.jpg" alt="Casa Hermandad El Rico" class="rounded-3xl">
+            </div>
+            <div>
+                <h2 class="title-font text-4xl font-bold mb-6">Iglesia Santiago Apóstol</h2>
+                <p class="mb-8">Sede canónica desde 1836. En la capilla del lado del Evangelio se veneran los Sagrados Titulares.</p>
+                <img src="https://static.grupojoly.com/clip/ba34a2b3-6e74-4c95-98e1-a57613ffcb69_source-aspect-ratio_1600w_0.jpg" alt="Iglesia Santiago Apóstol Málaga" class="rounded-3xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#4B0082] text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-[#D4AF77] mb-4">Cofradía El Rico de Málaga © 2026</p>
+            <p class="text-sm opacity-70">Página web creada como homenaje. 
+            <p class="text-xs mt-8 opacity-50">Código generado con cariño para la devoción malagueña.</p>
+        </div>
+    </footer>
+
+    <!-- AUDIO -->
+    <audio id="cofradia-audio" src=\RICO\202606071334.mp3 preload="auto"></audio>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            // No additional config needed for CDN
+        }
+        
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu')
+            menu.classList.toggle('hidden')
+        }
+        
+        // Dropdown simple (hover ya funciona en desktop)
+        function toggleDropdown(el) {
+            // Para móviles si hiciera falta, pero hover ya está en CSS
+        }
+        
+        // Galería con 8 imágenes reales y descriptivas
+        const galleryImages = [
+            {
+                src: "https://cofradiaelrico.com/wp-content/uploads/2026/01/5040002-e1768818755218.jpg",
+                thumb: "https://cofradiaelrico.com/wp-content/uploads/2026/01/5040002-e1768818755218.jpg",
+                alt: "María Santísima del Amor",
+                caption: "María Santísima del Amor en su retablo"
+            },
+            {
+                src: "https://cofradiaelrico.com/wp-content/uploads/2026/01/A233626-e1768819211651.jpg",
+                thumb: "https://cofradiaelrico.com/wp-content/uploads/2026/01/A233626-e1768819211651.jpg",
+                alt: "Nuestro Padre Jesús El Rico",
+                caption: "Nuestro Padre Jesús “El Rico”"
+            },
+            {
+                src: "https://static.grupojoly.com/clip/4eb57608-f3e9-4d99-8acc-9247007a836c_source-aspect-ratio_1600w_0_x1164y1086.jpg",
+                thumb: "https://static.grupojoly.com/clip/4eb57608-f3e9-4d99-8acc-9247007a836c_source-aspect-ratio_1600w_0_x1164y1086.jpg",
+                alt: "Procesión Cofradía El Rico",
+                caption: "Procesión por las calles de Málaga"
+            },
+            {
+                src: "https://static.visita.malaga.eu/visita/subidas/imagenes/0/3/arc_30930_g.jpg",
+                thumb: "https://static.visita.malaga.eu/visita/subidas/imagenes/0/3/arc_30930_g.jpg",
+                alt: "Iglesia Santiago Apóstol Málaga",
+                caption: "Iglesia Santiago Apóstol, sede canónica"
+            },
+            {
+                src: "https://cofradiaelrico.com/wp-content/uploads/2026/01/4160096.jpg",
+                thumb: "https://cofradiaelrico.com/wp-content/uploads/2026/01/4160096.jpg",
+                alt: "Casa Hermandad El Rico",
+                caption: "Casa Hermandad en Calle Victoria"
+            },
+            {
+                src: "https://static.grupojoly.com/clip/1acdc8a9-79e0-4fec-8083-fc2d4f9f4979_source-aspect-ratio_1600w_0.jpg",
+                thumb: "https://static.grupojoly.com/clip/1acdc8a9-79e0-4fec-8083-fc2d4f9f4979_source-aspect-ratio_1600w_0.jpg",
+                alt: "Momento del indulto",
+                caption: "Liberación del preso en Plaza del Obispo"
+            },
+            {
+                src: "https://pbs.twimg.com/media/DLSKbAnX0AAGsJ1.jpg",
+                thumb: "https://pbs.twimg.com/media/DLSKbAnX0AAGsJ1.jpg",
+                alt: "Trono de la Virgen",
+                caption: "Trono procesional de María Santísima del Amor"
+            },
+            {
+                src: "https://www.gentedepaz.es/wp-content/uploads/2016/02/jesus-el-rico.jpg",
+                thumb: "https://www.gentedepaz.es/wp-content/uploads/2016/02/jesus-el-rico.jpg",
+                alt: "Trono del Cristo",
+                caption: "Trono procesional de Nuestro Padre Jesús “El Rico”"
+            }
+        ]
+        
+        function loadGallery() {
+            const container = document.getElementById('gallery-grid')
+            container.innerHTML = ''
+            
+            galleryImages.forEach((img, index) => {
+                const div = document.createElement('div')
+                div.className = 'relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl thumbnail'
+                div.innerHTML = `
+                    <img src="${img.thumb}" alt="${img.alt}" class="w-full aspect-square object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end p-6">
+                        <p class="text-white font-medium text-sm">${img.alt}</p>
+                    </div>
+                `
+                div.onclick = () => showModal(img.src, img.caption)
+                container.appendChild(div)
+            })
+        }
+        
+        function showModal(src, caption) {
+            const modal = document.getElementById('modal')
+            const modalImg = document.getElementById('modal-image')
+            const modalCap = document.getElementById('modal-caption')
+            
+            modalImg.src = src
+            modalCap.textContent = caption
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('modal')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+        
+        // Inicialización
+        window.onload = function() {
+            initializeTailwind()
+            loadGallery()
+            
+            // Reproducir audio una sola vez al cargar la página
+            const audio = document.getElementById('cofradia-audio')
+            audio.play().catch(() => {
+                // Autoplay bloqueado por navegador (comportamiento normal)
+            })
+            
+            console.log('%c✅ Página de la Cofradía El Rico generada con éxito. Todas las imágenes son placeholders fáciles de reemplazar.', 'color:#D4AF77; font-family:monospace')
+            console.log('→ Para cambiar cualquier foto: edita el atributo src de la etiqueta <img>')
+        }
+    </script>
+</body>
+</html>
